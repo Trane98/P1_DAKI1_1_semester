@@ -1,0 +1,9 @@
+joblib                1.4.2
+jupyter_client        8.6.3
+jupyter_core          5.7.2
+matplotlib            3.9.2
+pandas                2.2.2
+scikit-learn          1.5.2
+seaborn               0.13.2
+python                3.12
+numpy                 2.1.1
