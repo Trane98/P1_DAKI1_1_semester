@@ -3,16 +3,40 @@ import pandas as pd
 import os
 
 
-
+# Finder mappen vi befinder os i
 current_folder = os.path.dirname(os.path.abspath(__file__))
+
+# Stier til de trænede modeller
 model_path_RF = os.path.join(current_folder, "stress_model_RF.joblib")
 model_path_LR = os.path.join(current_folder, "stress_model_LR.joblib")
 model_path_KNN = os.path.join(current_folder, "stress_model_KNN.joblib")
 
-# Load the trained Random Forest model
-model_RF = joblib.load(model_path_RF)
-model_LR = joblib.load(model_path_LR)
-model_KNN = joblib.load(model_path_KNN)
+
+#Indlæser modellerne, og viser, hvis der sker en fejl, og hvad fejlen nok er
+try:
+    model_RF = joblib.load(model_path_RF)
+    print("Random Forest model loaded successfully.")
+except FileNotFoundError:
+    print("Error: Model path 'stress_model_RF.joblib' not found. Ensure the model is in the same folder as the script.")
+except Exception as e:
+    print(f"An unexpected error occurred while loading 'stress_model_RF.joblib': {e}")
+
+try:
+    model_LR = joblib.load(model_path_LR)
+    print("Logistic Regression model loaded successfully.")
+except FileNotFoundError:
+    print("Error: Model path 'stress_model_LR.joblib' not found. Ensure the model is in the same folder as the script.")
+except Exception as e:
+    print(f"An unexpected error occurred while loading 'stress_model_LR.joblib': {e}")
+
+try:
+    model_KNN = joblib.load(model_path_KNN)
+    print("K-Nearest Neighbors model loaded successfully.")
+except FileNotFoundError:
+    print("Error: Model path 'stress_model_KNN.joblib' not found. Ensure the model is in the same folder as the script.")
+except Exception as e:
+    print(f"An unexpected error occurred while loading 'stress_model_KNN.joblib': {e}")
+
 
 print("Dine værdier skal nu indtastes")
 sleep_Duration = float(input("Indtast søvnlængde i timer: "))
