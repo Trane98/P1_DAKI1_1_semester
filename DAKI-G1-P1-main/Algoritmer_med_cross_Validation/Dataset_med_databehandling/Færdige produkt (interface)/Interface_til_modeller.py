@@ -5,9 +5,9 @@ import pandas as pd
 
 
 # Load the trained Random Forest model
-model_RF = joblib.load("C:\\Program Files (x86)\\python_work\\python_work\\P1 projekt\\DAKI-G1-P1\\Algoritmer_med_cross_Validation\\Dataset_med_databehandling\\Test_mappe_for_forskellige_ting\\stress_model_RF.pkl")
-model_LR = joblib.load("C:\\Program Files (x86)\\python_work\\python_work\\P1 projekt\\DAKI-G1-P1\\Algoritmer_med_cross_Validation\\Dataset_med_databehandling\\Test_mappe_for_forskellige_ting\\stress_model_LR.pkl")
-model_KNN = joblib.load("C:\\Program Files (x86)\\python_work\\python_work\\P1 projekt\\DAKI-G1-P1\\Algoritmer_med_cross_Validation\\Dataset_med_databehandling\\Test_mappe_for_forskellige_ting\\stress_model_KNN.pkl")
+model_RF = joblib.load("stress_model_RF.joblib")
+model_LR = joblib.load("stress_model_LR.joblib")
+model_KNN = joblib.load("stress_model_KNN.joblib")
 
 print("Dine værdier skal nu indtastes")
 sleep_Duration = float(input("Indtast søvnlængde i timer: "))
