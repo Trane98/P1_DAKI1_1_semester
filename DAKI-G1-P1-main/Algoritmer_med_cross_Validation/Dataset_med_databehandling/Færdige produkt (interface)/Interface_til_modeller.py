@@ -1,13 +1,18 @@
 import joblib
 import pandas as pd
+import os
 
 
 
+current_folder = os.path.dirname(os.path.abspath(__file__))
+model_path_RF = os.path.join(current_folder, "stress_model_RF.joblib")
+model_path_LR = os.path.join(current_folder, "stress_model_LR.joblib")
+model_path_KNN = os.path.join(current_folder, "stress_model_KNN.joblib")
 
 # Load the trained Random Forest model
-model_RF = joblib.load("stress_model_RF.joblib")
-model_LR = joblib.load("stress_model_LR.joblib")
-model_KNN = joblib.load("stress_model_KNN.joblib")
+model_RF = joblib.load(model_path_RF)
+model_LR = joblib.load(model_path_LR)
+model_KNN = joblib.load(model_path_KNN)
 
 print("Dine værdier skal nu indtastes")
 sleep_Duration = float(input("Indtast søvnlængde i timer: "))
@@ -73,31 +78,31 @@ predictions = predictions_RF + predictions_LR + predictions_KNN
 #Printer simpelt output af de nye data. 
 #Predictions er ML-modellens output givet som 
 if predictions >= 2:
-    print("Du er stresset, læs yderligere for at finde ud af, hvad du kan gøre, for at nedbringe dine stress faktorer")
+    print("\nDu er stresset, læs yderligere for at finde ud af, hvad du kan gøre, for at nedbringe dine stress faktorer\n")
     if sleep_Duration < 6:
-        print("Dit søvnniveau er lavt, det er anbefaldet af sundhedsstyrelsen at voksne mennesker helst skal have 7-9 timer søvn pr. dag. 6 og 10 timer kan også være en passende søvnlængde for nogle mennesker")
+        print("Dit søvnniveau er lavt, det er anbefaldet af sundhedsstyrelsen at voksne mennesker helst skal have 7-9 timer søvn pr. dag. 6 og 10 timer kan også være en passende søvnlængde for nogle mennesker\n")
     #https://www.sst.dk/-/media/Udgivelser/2024/Soevn/Anbefalinger-for-soevnlaengde.ashx
     if quality_of_sleep < 6:
-        print("Din søvnkvalitet er lav, bedre søvnkvalitet, kan være at sove længere eller kortere, man skal efter sin søvn føle sig udhvilet. Prøv at få en bedre døgnrytme eller udmatte kroppen før sengetid")
+        print("Din søvnkvalitet er lav, bedre søvnkvalitet, kan være at sove længere eller kortere, man skal efter sin søvn føle sig udhvilet. Prøv at få en bedre døgnrytme eller udmatte kroppen før sengetid\n")
     #https://netdoktor.dk/soevn/sygdomme/sovn-hvad-er-normalt/
     if heart_rate_scaled > 8:
-        print("En normal hvilepuls for mænd er 60-80, kvinder 70-90 en høj hvilepuls er derfor ikke nødvendigvis farlig, men træning kan få ens hvilepuls ned. Ved hvilepuls forhøjning over tid, kan dette være tegn på stress")
+        print("En normal hvilepuls for mænd er 60-80, kvinder 70-90 en høj hvilepuls er derfor ikke nødvendigvis farlig, men træning kan få ens hvilepuls ned. Ved hvilepuls forhøjning over tid, kan dette være tegn på stress\n")
     #https://hjerteforeningen.dk/artikler/alle-artikler/dette-skal-du-vide-om-pulsen-og-dit-hjerte/
     if daily_steps_scaled < 8000:
-        print("Sigt gerne efter at ramme mindst 7000 skridt, hjerteforeningen viser at du har 50-70 procent lavere dødlighed vedrørende udvikling af hjerte-kar-sygdomme ved at gøre dette. Dog findes der intet magisk tal, det handler mest om, hvor aktiv du er i din dagligdag.")
+        print("Sigt gerne efter at ramme mindst 7000 skridt, hjerteforeningen viser at du har 50-70 procent lavere dødlighed vedrørende udvikling af hjerte-kar-sygdomme ved at gøre dette. Dog findes der intet magisk tal, det handler mest om, hvor aktiv du er i din dagligdag.\n")
     #https://hjerteforeningen.dk/artikler/alle-artikler/saa-mange-skridt-skal-du-gaa-for-et-laengere-liv/
     if physical_activity_level_scaled < 6:
-        print("Din fysiske aktivitet er lav, sigt efter at være aktiv 30 minutter om dagen med mindst 2 fysiske træninger med høj intensitet. Dette er dog mindste værdierne, så at træne yderligere giver sundhedsmæssige fordele")
+        print("Din fysiske aktivitet er lav, sigt efter at være aktiv 30 minutter om dagen med mindst 2 fysiske træninger med høj intensitet. Dette er dog mindste værdierne, så at træne yderligere giver sundhedsmæssige fordele\n")
     #https://www.sundhed.dk/borger/forebyggelse/livsstil/fysisk-aktivitet/
     if bmi == 0:
-        print("Du er undervægtig hvilket kan øge risikoen for at udvikle stress og andre sundhedsproblemer. Dog tager en BMI måling ikke højdre for muskel og fedtmasse, BMI bruges mest som en general målefaktor på den generalle befolkning")
+        print("Du er undervægtig hvilket kan øge risikoen for at udvikle stress og andre sundhedsproblemer. Dog tager en BMI måling ikke højdre for muskel og fedtmasse, BMI bruges mest som en general målefaktor på den generalle befolkning\n")
     if bmi == 2:
-        print("Du er overvægtig, hvilket kan øge risikoen for at udvikle stress og andre sundhedsproblemer. Dog tager en BMI måling ikke højdre for muskel og fedtmasse, BMI bruges mest som en general målefaktor på den generalle befolkning")
+        print("Du er overvægtig, hvilket kan øge risikoen for at udvikle stress og andre sundhedsproblemer. Dog tager en BMI måling ikke højdre for muskel og fedtmasse, BMI bruges mest som en general målefaktor på den generalle befolkning\n")
     if bmi == 3:
-        print("Du er svært overvægtig, hvilket kan øge risikoen for at udvikle stress og andre sundhedsproblemer. Dog tager en BMI måling ikke højdre for muskel og fedtmasse, BMI bruges mest som en general målefaktor på den generalle befolkning")
+        print("Du er svært overvægtig, hvilket kan øge risikoen for at udvikle stress og andre sundhedsproblemer. Dog tager en BMI måling ikke højdre for muskel og fedtmasse, BMI bruges mest som en general målefaktor på den generalle befolkning\n")
     #https://www.nature.com/articles/s42003-023-05396-8
 else:
     print("Du er ikke stresset")
 
 
-input("Press Enter to exit...")
+input("Press Enter to exit...\n")
